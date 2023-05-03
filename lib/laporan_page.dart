@@ -121,6 +121,12 @@ class _LaporanPageState extends State<LaporanPage> {
           ],
         ),
       ), 
+      backgroundColor: Colors.white,
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+        BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: "Tersimpan"),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil")
+      ]),
     );                      
   }
   

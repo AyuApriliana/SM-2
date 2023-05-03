@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laporan/home_page.dart';
 import 'package:laporan/laporan_page.dart';
 import 'package:laporan/navbar.dart';
 
@@ -20,11 +21,7 @@ class MyApp extends StatelessWidget {
         title: const Text('Jalan Mulus'),
         backgroundColor: Colors.lightBlueAccent,
       ),
-      body: const Center(
-        child: Text(
-          'Main Page', 
-        style: TextStyle(fontSize: 40),
-      )),
+      body: HomePage()
     ),
     );
   }

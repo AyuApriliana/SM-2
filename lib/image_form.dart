@@ -18,7 +18,9 @@ class _ImageFormState extends State<ImageForm> {
     final XFile? imagePicked =
         await _picker.pickImage(source: ImageSource.gallery);
       image = File(imagePicked!.path);
+    
     setState(() {});
+    
   }
 
   @override
