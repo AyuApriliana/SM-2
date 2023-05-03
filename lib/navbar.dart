@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laporan/home_page.dart';
 import 'package:laporan/laporan_page.dart';
 
 class Navbar extends StatelessWidget {
@@ -9,13 +10,20 @@ class Navbar extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          UserAccountsDrawerHeader(
+          const UserAccountsDrawerHeader(
             accountName: Text('Aldi'), 
             accountEmail: Text('aldi@gmail.com'),
             currentAccountPicture: CircleAvatar(),
             decoration: BoxDecoration(
               color: Colors.lightBlueAccent
             ),
+            ),
+            ListTile(
+              leading: Icon(Icons.report),
+              title: Text('Beranda'),
+              onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+                    },
             ),
             ListTile(
               leading: Icon(Icons.report),

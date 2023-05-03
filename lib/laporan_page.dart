@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:laporan/image_form.dart';
 import 'package:cool_alert/cool_alert.dart';
+import 'package:laporan/navbar.dart';
 
 
 class LaporanPage extends StatefulWidget {
@@ -17,7 +18,7 @@ class _LaporanPageState extends State<LaporanPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent ,
-        leading: const Icon(Icons.menu),
+        // leading: const Icon(Icons.menu),
         title: const Text('LAPORAN'),
         centerTitle: true,
       ),
@@ -124,7 +125,7 @@ class _LaporanPageState extends State<LaporanPage> {
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: "Tersimpan"),
+        BottomNavigationBarItem(icon: Icon(Icons.add_a_photo_rounded), label: "Add"),
         BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil")
       ]),
     );                      
