@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:laporan/beranda.dart';
+import 'package:laporan/dasboard.dart';
 import 'package:laporan/home_page.dart';
 import 'package:laporan/laporan_page.dart';
 
@@ -17,6 +19,13 @@ class Navbar extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.lightBlueAccent
             ),
+            ),
+            ListTile(
+              leading: Icon(Icons.report),
+              title: Text('Dashboard'),
+              onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Beranda()));
+                    },
             ),
             ListTile(
               leading: Icon(Icons.report),
