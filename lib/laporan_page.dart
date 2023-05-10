@@ -17,7 +17,7 @@ class _LaporanPageState extends State<LaporanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlueAccent ,
+        backgroundColor: Colors.blueAccent ,
         // leading: const Icon(Icons.menu),
         title: const Text('LAPORAN'),
         centerTitle: true,

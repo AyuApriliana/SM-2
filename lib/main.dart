@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laporan/beranda.dart';
 import 'package:laporan/home_page.dart';
 import 'package:laporan/laporan_page.dart';
 import 'package:laporan/navbar.dart';
@@ -16,12 +17,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        drawer: Navbar(),
-      appBar: AppBar(
-        title: const Text('Jalan Mulus'),
-        backgroundColor: Colors.lightBlueAccent,
-      ),
-      body: HomePage()
+        // drawer: Navbar(),
+      // appBar: AppBar(
+      //   title: const Text('Jalan Mulus'),
+      //   backgroundColor: Colors.lightBlueAccent,
+      // ),
+      body: Beranda()
     ),
     );
   }
