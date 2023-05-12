@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                      Padding(
                         padding: const EdgeInsets.all(15),
                         child: Text(
-                          "Beranda",
+                          "Hasil Laporan",
                           style: GoogleFonts.montserrat(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),

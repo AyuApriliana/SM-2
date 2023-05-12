@@ -15,9 +15,9 @@ class _DasboardState extends State<Dasboard> {
     return Scaffold(
       drawer: Navbar(),
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: const Text('Jalan Mulus')
-        ),
+        title: const Text('Jalan Mulus'),
+        backgroundColor: Colors.lightBlueAccent,
+      ),
       body: SingleChildScrollView(
         child: Column( 
           children: [
@@ -41,7 +41,7 @@ class _DasboardState extends State<Dasboard> {
                   SizedBox(
                     width: double.infinity,
                     height: 150,
-                    child: Image.asset("assets/images/lubang5.jpg"),
+                    child: Image.asset("assets/images/lubang1.jpeg"),
                   )
                 ]
                 ),
@@ -86,7 +86,7 @@ class _DasboardState extends State<Dasboard> {
                   SizedBox(
                     width: double.infinity,
                     height: 150,
-                    child: Image.asset("assets/images/lubang3.jpg"),
+                    child: Image.asset("assets/images/lubang2.jpeg"),
                   )
                 ]
                 ),

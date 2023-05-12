@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laporan/beranda.dart';
+import 'package:laporan/camera.dart';
 import 'package:laporan/dasboard.dart';
 import 'package:laporan/home_page.dart';
 import 'package:laporan/laporan_page.dart';
@@ -21,24 +22,24 @@ class Navbar extends StatelessWidget {
             ),
             ),
             ListTile(
-              leading: Icon(Icons.report),
-              title: Text('Dashboard'),
+              leading: Icon(Icons.home),
+              title: Text('Home'),
               onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => Beranda()));
                     },
             ),
             ListTile(
-              leading: Icon(Icons.report),
-              title: Text('Beranda'),
+              leading: Icon(Icons.dashboard),
+              title: Text('Hasil Laporan'),
               onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
                     },
             ),
             ListTile(
-              leading: Icon(Icons.report),
+              leading: Icon(Icons.upload),
               title: Text('Laporan'),
               onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => LaporanPage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Camera()));
                     },
             ),
         ],

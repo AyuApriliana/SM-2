@@ -16,6 +16,7 @@ class _LaporanPageState extends State<LaporanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Navbar(),
       appBar: AppBar(
         backgroundColor: Colors.blueAccent ,
         // leading: const Icon(Icons.menu),
@@ -27,12 +28,13 @@ class _LaporanPageState extends State<LaporanPage> {
           children: <Widget>[
             Container(
               padding: EdgeInsets.only(top: 50, right: 15),
-              child: const Row(
+              child:  Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon( Icons.image,),
                    Text('Image'),
-                ]
+                ],
+                
               ),
             ),
             GestureDetector(
@@ -44,7 +46,7 @@ class _LaporanPageState extends State<LaporanPage> {
               child: Container(
                 padding: const EdgeInsets.only(right: 10),
                 height: 40,                  
-                child: const Row(
+                child:  Row(
                   children: [
                     const Text('  Input Image', textAlign: TextAlign.center),
                   ]
@@ -58,7 +60,7 @@ class _LaporanPageState extends State<LaporanPage> {
             Container(
               padding: EdgeInsets.only(top: 50, left: 15),
               child: 
-                const Row(
+                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon( Icons.add_location_alt,),
@@ -80,7 +82,7 @@ class _LaporanPageState extends State<LaporanPage> {
             Container(
               padding: EdgeInsets.only(top: 50, left: 15),
               child: 
-                const Row(
+                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text('Description'),

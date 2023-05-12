@@ -3,8 +3,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:laporan/dasboard.dart';
+import 'package:laporan/home_page.dart';
 import 'package:laporan/laporan_page.dart';
-import 'package:laporan/navbar.dart';
+import 'package:laporan/camera.dart';
+import 'package:laporan/profile.dart';
 
 class Beranda extends StatefulWidget {
   const Beranda({super.key});
@@ -19,7 +21,6 @@ class _BerandaState extends State<Beranda> {
     var montserrat = GoogleFonts.montserrat(
           fontSize: 12);
     return Scaffold(
-      drawer: Navbar(),
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         title: const Text('Jalan Mulus')
@@ -32,13 +33,13 @@ class _BerandaState extends State<Beranda> {
             margin: EdgeInsets.all(8),
             child: InkWell(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Dasboard()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
               },
               splashColor: Colors.amber,
               child: Center(child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Icon(Icons.book, size: 70, color: Colors.amber,),
+                  Icon(Icons.book, size: 70, color: Colors.amber),
                   Text("Hasil Laporan", style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
                 ],
               )),
@@ -48,22 +49,26 @@ class _BerandaState extends State<Beranda> {
             margin: EdgeInsets.all(8),
             child: InkWell(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => LaporanPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Camera()));
               },
               splashColor: Colors.amber,
-              child: Center(child: Column(
+              child: Center(
+                child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Icon(Icons.report, size: 70, color: Colors.red,),
-                  Text("Report", style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
-                ],
-              )),
+                  Icon(Icons.upload, size: 70, color: Colors.red,),
+                  Text("Kirim Laporan", style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
+                 ],
+              ),
+              ),
               ),
           ),
           Card(
             margin: EdgeInsets.all(8),
             child: InkWell(
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilScreen()));
+              },
               splashColor: Colors.amber,
               child: Center(child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -74,13 +79,7 @@ class _BerandaState extends State<Beranda> {
               )),
               ),
           )
-        ],),
-        bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.add_a_photo_rounded), label: "Add"),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil")
-      ]),
+        ],)
     );
-    
   }
 }
