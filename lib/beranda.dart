@@ -6,6 +6,7 @@ import 'package:laporan/dasboard.dart';
 import 'package:laporan/home_page.dart';
 import 'package:laporan/laporan_page.dart';
 import 'package:laporan/camera.dart';
+import 'package:laporan/navbar.dart';
 import 'package:laporan/profile.dart';
 
 class Beranda extends StatefulWidget {
@@ -21,6 +22,7 @@ class _BerandaState extends State<Beranda> {
     var montserrat = GoogleFonts.montserrat(
           fontSize: 12);
     return Scaffold(
+      drawer: Navbar(),
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         title: const Text('Jalan Mulus')
@@ -79,7 +81,12 @@ class _BerandaState extends State<Beranda> {
               )),
               ),
           )
-        ],)
+        ]),
+        bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+        BottomNavigationBarItem(icon: Icon(Icons.add_a_photo_rounded), label: "Add"),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil")
+        ]),
     );
   }
 }

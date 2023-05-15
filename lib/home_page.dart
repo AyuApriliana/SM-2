@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                      Padding(
                         padding: const EdgeInsets.all(15),
                         child: Text(
-                          "Hasil Laporan",
+                          "Beranda Laporan",
                           style: GoogleFonts.montserrat(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
@@ -84,7 +84,6 @@ class _HomePageState extends State<HomePage> {
                                   height: 150,
                                   child: Image.asset(
                                       "assets/images/lubang1.jpeg",
-                                      fit: BoxFit.cover,
                                   ),
                                 ),
                               ],
@@ -96,17 +95,21 @@ class _HomePageState extends State<HomePage> {
                             child: SizedBox(
                               height: 70,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Pabian - Sumenep",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 17, fontWeight: FontWeight.bold),),
+                                      SizedBox(
+                                        width:10,
+                                      ),
                                       Row(
                                         children: [
-                                          Icon(Icons.favorite, color: Colors.red),
+                                          Icon(Icons.star, color: Colors.yellow),
                                           SizedBox(
                                             width: 5,
                                           ),
-                                          Text("4.5k",
+                                          Text("4.5",
                                               style: 
                                                   GoogleFonts.montserrat(fontSize: 12)),
                                           SizedBox(
@@ -139,7 +142,6 @@ class _HomePageState extends State<HomePage> {
                                   height: 150,
                                   child: Image.asset(
                                       "assets/images/lubang2.jpeg",
-                                      fit: BoxFit.cover,
                                   ),
                                 ),
                               ],
@@ -151,17 +153,21 @@ class _HomePageState extends State<HomePage> {
                             child: SizedBox(
                               height: 70,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Kertasada - Sumenep",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 17, fontWeight: FontWeight.bold),),
+                                      SizedBox(
+                                        width:10,
+                                      ),
                                       Row(
                                         children: [
-                                          Icon(Icons.favorite, color: Colors.red),
+                                          Icon(Icons.star, color: Colors.yellow),
                                           SizedBox(
                                             width: 5,
                                           ),
-                                          Text("2.7k",
+                                          Text("3.3",
                                               style: 
                                                   GoogleFonts.montserrat(fontSize: 12)),
                                           SizedBox(
@@ -193,7 +199,6 @@ class _HomePageState extends State<HomePage> {
                                   height: 150,
                                   child: Image.asset(
                                       "assets/images/lubang3.jpg",
-                                      fit: BoxFit.cover,
                                   ),
                                 ),
                               ],
@@ -205,17 +210,21 @@ class _HomePageState extends State<HomePage> {
                             child: SizedBox(
                               height: 70,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Bangselok - Sumenep",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 17, fontWeight: FontWeight.bold),),
+                                      SizedBox(
+                                        width:10,
+                                      ),
                                       Row(
                                         children: [
-                                          Icon(Icons.favorite, color: Colors.red),
+                                          Icon(Icons.star, color: Colors.yellow),
                                           SizedBox(
                                             width: 5,
                                           ),
-                                          Text("1k",
+                                          Text("4.2",
                                               style: 
                                                   GoogleFonts.montserrat(fontSize: 12)),
                                           SizedBox(
@@ -249,7 +258,6 @@ class _HomePageState extends State<HomePage> {
                                   height: 150,
                                   child: Image.asset(
                                       "assets/images/lubang4.jpeg",
-                                      fit: BoxFit.cover,
                                   ),
                                 ),
                               ],
@@ -261,17 +269,21 @@ class _HomePageState extends State<HomePage> {
                             child: SizedBox(
                               height: 70,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Kalianget - Sumenep",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 17, fontWeight: FontWeight.bold),),
+                                      SizedBox(
+                                        width:10,
+                                      ),
                                       Row(
                                         children: [
-                                          Icon(Icons.favorite, color: Colors.red),
+                                          Icon(Icons.star, color: Colors.yellow),
                                           SizedBox(
                                             width: 5,
                                           ),
-                                          Text("100",
+                                          Text("3.9",
                                               style: 
                                                   GoogleFonts.montserrat(fontSize: 12)),
                                           SizedBox(
@@ -305,7 +317,6 @@ class _HomePageState extends State<HomePage> {
                                   height: 150,
                                   child: Image.asset(
                                       "assets/images/lubang5.jpg",
-                                      fit: BoxFit.cover,
                                   ),
                                 ),
                               ],
@@ -317,17 +328,21 @@ class _HomePageState extends State<HomePage> {
                             child: SizedBox(
                               height: 70,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Marengan - Sumenep",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 17, fontWeight: FontWeight.bold),),
+                                      SizedBox(
+                                        width:10,
+                                      ),
                                       Row(
                                         children: [
-                                          Icon(Icons.favorite, color: Colors.red),
+                                          Icon(Icons.star, color: Colors.yellow),
                                           SizedBox(
                                             width: 5,
                                           ),
-                                          Text("500",
+                                          Text("5.0",
                                               style: 
                                                   GoogleFonts.montserrat(fontSize: 12)),
                                           SizedBox(
@@ -361,7 +376,6 @@ class _HomePageState extends State<HomePage> {
                                   height: 150,
                                   child: Image.asset(
                                       "assets/images/lubang6.jpeg",
-                                      fit: BoxFit.cover,
                                   ),
                                 ),
                               ],
@@ -373,17 +387,21 @@ class _HomePageState extends State<HomePage> {
                             child: SizedBox(
                               height: 70,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Kebunan - Sumenep",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 17, fontWeight: FontWeight.bold),),
+                                      SizedBox(
+                                        width:10,
+                                      ),
                                       Row(
                                         children: [
-                                          Icon(Icons.favorite, color: Colors.red),
+                                          Icon(Icons.star, color: Colors.yellow),
                                           SizedBox(
                                             width: 5,
                                           ),
-                                          Text("10k",
+                                          Text("4.0",
                                               style: 
                                                   GoogleFonts.montserrat(fontSize: 12)),
                                           SizedBox(
