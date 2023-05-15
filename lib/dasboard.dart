@@ -23,7 +23,7 @@ class _DasboardState extends State<Dasboard> {
           children: [
            const SizedBox(height: 50),
         Center( 
-          child: Text('Hasil Laporan Jalan Rusak',
+          child: Text('History Laporan Anda',
           style: GoogleFonts.montserrat(fontSize: 24, fontWeight: FontWeight.bold)),
         ),
         SizedBox(
