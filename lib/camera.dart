@@ -137,7 +137,7 @@ Future getImage(ImageSource source) async {
                      controller: input2,
                       validator: (value) {
                         if (value == null || value.isEmpty){
-                          return "Text harus di isi";
+                          return "Masukkan Lokasi";
                         }return null;
                       },
                       decoration: InputDecoration(
@@ -166,7 +166,7 @@ Future getImage(ImageSource source) async {
                     text: " Validasi Eror",
                   );
                             }else {
-                              print('validation eror');
+                              print('Validasi Error');
                             } 
                   
                 },
