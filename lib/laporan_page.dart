@@ -109,7 +109,7 @@ class _LaporanPageState extends State<LaporanPage> {
                   CoolAlert.show(
                     context: context,
                     type: CoolAlertType.success,
-                    text: "Laporan berhasil dikirim",
+                    text: "Laporan",
                   );
                 },
                 style: TextButton.styleFrom(
