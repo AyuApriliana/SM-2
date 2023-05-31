@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        // drawer: Navbar(),
+      // drawer: Navbar(),
       // appBar: AppBar(
       //   title: const Text('Jalan Mulus'),
       //   backgroundColor: Colors.lightBlueAccent,

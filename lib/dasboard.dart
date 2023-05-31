@@ -1,15 +1,37 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:laporan/navbar.dart';
 
 class Dasboard extends StatefulWidget {
-  const Dasboard({super.key});
+  const Dasboard({Key? key}) : super(key: key);
 
   @override
-  State<Dasboard> createState() => _DasboardState();
+  _DasboardState createState() => _DasboardState();
 }
 
 class _DasboardState extends State<Dasboard> {
+  List<Map<String, dynamic>> laporanData = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    final response = await http.get(Uri.parse('http://127.0.0.1:8000/api/laporan/'));
+    if (response.statusCode == 200) {
+      final jsonData = jsonDecode(response.body);
+      setState(() {
+        laporanData = List<Map<String, dynamic>>.from(jsonData);
+      });
+    } else {
+      print('Failed to fetch data');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,108 +41,67 @@ class _DasboardState extends State<Dasboard> {
         backgroundColor: Colors.lightBlueAccent,
       ),
       body: SingleChildScrollView(
-        child: Column( 
+        child: Column(
           children: [
-           const SizedBox(height: 50),
-        Center( 
-          child: Text('History Laporan Anda',
-          style: GoogleFonts.montserrat(fontSize: 24, fontWeight: FontWeight.bold)),
-        ),
-        SizedBox(
-          width: double.infinity,
-          height: 240,
-          child: Stack(
-            children: [
-              Card(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)
-                ),
-                elevation: 10,
-                child: Column(children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 150,
-                    child: Image.asset("assets/images/lubang1.jpeg"),
-                  )
-                ]
+            const SizedBox(height: 50),
+            Center(
+              child: Text(
+                'History Laporan Anda',
+                style: GoogleFonts.montserrat(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-               Positioned(bottom: 0, left: 10, 
-               child: SizedBox(
-                height: 70, 
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Jalan Sudirman',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold
-                    ),
-                    ),
-                    SizedBox(
-                      width: 10,
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: laporanData.length,
+              itemBuilder: (BuildContext context, int index) {
+                final laporanTest = laporanData[index];
+                return SizedBox(
+                  width: double.infinity,
+                  height: 240,
+                  child: Stack(
+                    children: [
+                      Card(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        elevation: 10,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: double.infinity,
+                              height: 150,
+                              child: Image.network(laporanTest['image']),
+                            ),
+                            ListTile(
+                              title: Text(
+                                laporanTest['lokasi'],
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              subtitle: Text(
+                                laporanTest['keterangan'],
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    Row(children: [
-                      Icon(Icons.star, color: Colors.amber),
-                      Text('4,5'), 
                     ],
-                    ),
-                  ],
-                ),),)
-            ],
-          ),
-        ),
-         SizedBox(
-          width: double.infinity,
-          height: 240,
-          child: Stack(
-            children: [
-              Card(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)
-                ),
-                elevation: 10,
-                child: Column(children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 150,
-                    child: Image.asset("assets/images/lubang2.jpeg"),
-                  )
-                ]
-                ),
-              ),
-               Positioned(bottom: 0, left: 10, 
-               child: SizedBox(
-                height: 70, 
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Jalan Diponegoro',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold
-                    ),
-                    ),
-                    // ignore: prefer_const_constructors
-                    SizedBox(
-                      width: 10,
-                      ),
-                    // ignore: prefer_const_literals_to_create_immutables
-                    Row(children: [
-                      Icon(Icons.star, color: Colors.amber),
-                      Text('5'), 
-                    ],
-                    ),
-                  ],
-                ),),)
-            ],
-          ),
-        )
+                  ),
+                );
+              },
+            ),
           ],
-          ),
-
+        ),
       ),
     );
   }
