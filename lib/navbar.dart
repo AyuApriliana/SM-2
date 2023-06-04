@@ -39,7 +39,7 @@ class Navbar extends StatelessWidget {
               leading: Icon(Icons.upload),
               title: Text('Laporan'),
               onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Camera()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => LaporanPage()));
                     },
             ),
         ],

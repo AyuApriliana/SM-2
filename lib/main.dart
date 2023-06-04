@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(create: (context) => LaporanData(), // Buat instance LaporanData
-      child: MaterialApp(
+    return  // Buat instance LaporanData
+    MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           // drawer: Navbar(),
@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
           // ),
           body: Beranda(),
         ),
-      ),
-    );
+      );
   }
 }
