@@ -51,7 +51,7 @@ class _BerandaState extends State<Beranda> {
             margin: EdgeInsets.all(8),
             child: InkWell(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Camera()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => LaporanPage()));
               },
               splashColor: Colors.amber,
               child: Center(

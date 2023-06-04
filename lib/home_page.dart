@@ -1,20 +1,35 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class HomePage extends StatelessWidget {
-  final String apiUrl = 'http://127.0.0.1:8000/api/laporan/'; // Ganti dengan URL API yang sesuai
+import 'package:laporan/laporan_data.dart';
+import 'package:laporan/model_laporan.dart';
+import 'package:laporan/rep_laporan.dart';
+import 'package:provider/provider.dart';
 
-  Future<List<dynamic>> fetchLaporan() async {
-    final response = await http.get(Uri.parse(apiUrl));
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
-    if (response.statusCode == 200) {
-      final dataLaporan =jsonDecode(response.body);
-      return dataLaporan['data'];
-    } else {
-      throw Exception('Failed to fetch laporan');
-    }
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<Laporan> listLaporan = [];
+  RepositoryLaporan repository = RepositoryLaporan();
+
+  getData() async {
+    listLaporan = await repository.getData();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
   }
 
   @override
@@ -25,66 +40,62 @@ class HomePage extends StatelessWidget {
         title: const Text('Jalan Mulus'),
       ),
       backgroundColor: Colors.white,
-      body: FutureBuilder<List<dynamic>>(
-        future: fetchLaporan(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            final laporanList = snapshot.data!;
-            return ListView.builder(
-              itemCount: laporanList.length,
-              itemBuilder: (context, index) {
-                final laporan = laporanList[index];
-                return Card(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  elevation: 10,
-                  child: Column(
+      body: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  final laporan = listLaporan[index];
+                  final imageUrl =
+                      repository.getImageUrl(laporan.images);
+                  return Row(
                     children: [
-                      SizedBox(
-                        width: double.infinity,
-                        height: 150,
-                        child: Image.network(laporan['image']),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          color: Colors.white,
+                        ),
+                        width: 250,
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              laporan['lokasi'],
-                              style: GoogleFonts.montserrat(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
+                            Expanded(
+                              child: Container(
+                                width: double.infinity,
+                                child:ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20),
+                                    ),
+                                    child: Image.network(
+                                      imageUrl,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                               ),
                             ),
-                            SizedBox(height: 5),
-                            Row(
-                              children: [
-                                Icon(Icons.star, color: Colors.yellow),
-                                SizedBox(width: 5),
-                                Text(
-                                  laporan['keterangan'].toString(),
-                                  style: GoogleFonts.montserrat(fontSize: 12),
+                            Container(
+                              margin: EdgeInsets.all(15),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Text(laporan.lokasi),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
                       ),
+                      SizedBox(
+                        width: 15,
+                      )
                     ],
-                  ),
-                );
-              },
-            );
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Failed to fetch laporan'));
-          } else {
-            return Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
+                  );
+                },
+              ),
     );
   }
+  
 }
