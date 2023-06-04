@@ -1,25 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:laporan/home_page.dart';
-import 'package:laporan/image_form.dart';
-import 'package:cool_alert/cool_alert.dart';
-import 'package:laporan/navbar.dart';
 import 'package:http/http.dart' as http;
+import 'package:cool_alert/cool_alert.dart';
+import 'package:laporan/image_form.dart';
+import 'package:laporan/laporan_data.dart';
+import 'package:provider/provider.dart';
 
 class LaporanPage extends StatefulWidget {
   final String apiUrl = 'http://127.0.0.1:8000/api/laporan/'; // Ganti dengan URL API yang sesuai
-
-  Future<List<dynamic>> fetchLaporan() async {
-    final response = await http.get(Uri.parse(apiUrl));
-
-    if (response.statusCode == 200) {
-      final dataLaporan = jsonDecode(response.body);
-      return dataLaporan['data'];
-    } else {
-      throw Exception('Failed to fetch laporan');
-    }
-  }
 
   const LaporanPage({Key? key}) : super(key: key);
 
@@ -28,19 +16,22 @@ class LaporanPage extends StatefulWidget {
 }
 
 class _LaporanPageState extends State<LaporanPage> {
-  String image = 'image';
-  String location = 'lokasi';
-  String description = 'keterangan';
+  String image = '';
+  String lokasi = '';
+  String keterangan = '';
 
   void sendLaporan() async {
     final response = await http.post(
       Uri.parse(widget.apiUrl),
       body: {
-        'image' : image,
-        'lokasi': location,
-        'keterangan': description,
+        'image': image,
+        'lokasi': lokasi,
+        'keterangan': keterangan,
       },
     );
+
+    final laporanData = Provider.of<LaporanData>(context, listen: false);
+    laporanData.updateLaporan(image, lokasi, keterangan);
 
     if (response.statusCode == 200) {
       CoolAlert.show(
@@ -60,7 +51,6 @@ class _LaporanPageState extends State<LaporanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Navbar(),
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         title: const Text('LAPORAN'),
@@ -80,8 +70,17 @@ class _LaporanPageState extends State<LaporanPage> {
               ),
             ),
             GestureDetector(
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => ImageForm())),
+              onTap: () async {
+                final result = await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ImageForm()),
+                );
+                if (result != null && result is String) {
+                  setState(() {
+                    image = result;
+                  });
+                }
+              },
               child: Container(
                 padding: const EdgeInsets.only(right: 10),
                 height: 40,
@@ -110,7 +109,7 @@ class _LaporanPageState extends State<LaporanPage> {
               child: TextField(
                 onChanged: (value) {
                   setState(() {
-                    location = value;
+                    lokasi = value;
                   });
                 },
                 decoration: InputDecoration(
@@ -136,7 +135,7 @@ class _LaporanPageState extends State<LaporanPage> {
               child: TextField(
                 onChanged: (value) {
                   setState(() {
-                    description = value;
+                    keterangan = value;
                   });
                 },
                 decoration: InputDecoration(
@@ -151,9 +150,8 @@ class _LaporanPageState extends State<LaporanPage> {
             Container(
               width: MediaQuery.of(context).size.width * 0.2,
               child: TextButton(
-                onPressed: (){
-                  Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => HomePage()));
+                onPressed: () {
+                  sendLaporan();
                 },
                 style: TextButton.styleFrom(backgroundColor: Colors.green.shade600),
                 child: const Text(
@@ -164,14 +162,6 @@ class _LaporanPageState extends State<LaporanPage> {
             ),
           ],
         ),
-      ),
-      backgroundColor: Colors.white,
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.add_a_photo_rounded), label: "Add"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil")
-        ],
       ),
     );
   }
