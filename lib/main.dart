@@ -4,7 +4,7 @@ import 'package:laporan/beranda.dart';
 import 'package:laporan/home_page.dart';
 import 'package:laporan/laporan_page.dart';
 import 'package:laporan/navbar.dart';
-import 'package:laporan/laporan_data.dart'; // Import LaporanData
+
 
 void main() {
   runApp(const MyApp());
