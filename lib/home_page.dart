@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
-import 'package:laporan/laporan_data.dart';
 import 'package:laporan/model_laporan.dart';
 import 'package:laporan/rep_laporan.dart';
 import 'package:provider/provider.dart';
@@ -42,11 +40,13 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       body: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 3,
+                itemCount: listLaporan.length, // Use the actual length of the list
                 itemBuilder: (context, index) {
+                  if (index >= listLaporan.length) {
+                    return SizedBox(); // Return an empty widget if the index is out of range
+                  }
                   final laporan = listLaporan[index];
-                  final imageUrl =
-                      repository.getImageUrl(laporan.images);
+                  final imageUrl = repository.getImageUrl(laporan.image);
                   return Row(
                     children: [
                       Container(

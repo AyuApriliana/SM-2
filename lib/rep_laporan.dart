@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:laporan/model_laporan.dart';
 
 class RepositoryLaporan {
-  final baseUrl = 'http://127.0.0.1:8000/api/laporan';
+  final baseUrl = 'http://10.0.0.2:8000/api/laporan';
 
   Future<List<Laporan>> getData() async {
     try {

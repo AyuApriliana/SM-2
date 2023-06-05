@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laporan/beranda.dart';
 import 'package:laporan/camera.dart';
-import 'package:laporan/dasboard.dart';
 import 'package:laporan/home_page.dart';
 import 'package:laporan/laporan_page.dart';
 
@@ -39,7 +38,7 @@ class Navbar extends StatelessWidget {
               leading: Icon(Icons.upload),
               title: Text('Laporan'),
               onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => LaporanPage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HasilLaporan()));
                     },
             ),
         ],
