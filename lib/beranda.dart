@@ -4,9 +4,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:laporan/home_page.dart';
-import 'package:laporan/laporan_page.dart';
-import 'package:laporan/camera.dart';
-import 'package:laporan/navbar.dart';
+import 'package:laporan/tulis_laporan.dart';
+import 'package:laporan/sidebar.dart';
 import 'package:laporan/profile.dart';
 
 class Beranda extends StatefulWidget {

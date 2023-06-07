@@ -11,7 +11,7 @@ import 'package:laporan/home_page.dart';
 import 'package:laporan/rep_laporan.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
-import 'package:laporan/navbar.dart';
+import 'package:laporan/sidebar.dart';
 import 'package:laporan/model_laporan.dart';
 
 

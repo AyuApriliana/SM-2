@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laporan/beranda.dart';
-import 'package:laporan/camera.dart';
+import 'package:laporan/tulis_laporan.dart';
 import 'package:laporan/home_page.dart';
-import 'package:laporan/laporan_page.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});

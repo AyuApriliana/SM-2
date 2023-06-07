@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laporan/beranda.dart';
-import 'package:laporan/navbar.dart';
+import 'package:laporan/sidebar.dart';
 
 class ProfilScreen extends StatelessWidget {
   const ProfilScreen({Key? key});
